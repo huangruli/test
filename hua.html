@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>窗口抖动</title>
+</head>
+<body>
+	<input type="button" value="创建新窗口">
+	<input type="button" value="moveTo">
+	<input type="button" value="走你">
+	<input type="button" value="停止">
+</body>
+</html>
+<script>
+	var btn = document.querySelectorAll('input');
+	var newWin = btn[0];
+	var move = btn[1];
+	var doudong = btn[2];
+	var stop = btn[3];
+	var win;
+	var timer;
+	newWin.onclick = function(){
+		win = window.open('','','width=100,height=100');
+	}
+	move.onclick = function(){
+		win.moveTo(100,100);
+		
+	}
+	doudong.onclick = function(){
+		var i = 0;
+		timer = setInterval(function(){
+			i++
+			if(i>4){
+				i = 1;
+			}
+
+			if(i==1){
+				win.moveTo(110,100);
+			} else if(i==2){
+				win.moveTo(110,110);
+			}  else if(i==3){
+				win.moveTo(100,110);
+			} else if(i==4){
+				win.moveTo(100,100);
+			}
+		},30);
+	}
+	stop.onclick = function(){
+		clearInterval(timer);
+	}
+</script>
